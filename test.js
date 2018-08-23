@@ -1,2 +1,9 @@
-var awslambda = require('./node_modules/awslambda/build/Release/awslambda');
-console.log(awslambda.initRuntime());
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3();
+s3.listBuckets().promise()
+.then((res) => {
+  console.log(res);
+})
+.catch((err) => {
+  console.error(err);
+});
